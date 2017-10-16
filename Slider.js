@@ -44,15 +44,9 @@ var sliderProps = {
 };
 
 class Slider extends React.Component {
-  propTypes: sliderProps
-
-  getDefaultProps() {
-    return mockProps;
-  }
-
   constructor(props) {
-    super(props);
 
+    super(props);
     this.optionsArray = this.props.optionsArray || converter.createArray(this.props.min,this.props.max,this.props.step);
     this.stepLength = this.props.sliderLength/this.optionsArray.length;
 
@@ -67,6 +61,13 @@ class Slider extends React.Component {
       positionOne: initialValues[0],
       positionTwo: initialValues[1]
     };
+
+    this.startTwo = this.startTwo.bind(this);
+    this.startOne = this.startOne.bind(this);
+    this.moveOne = this.moveOne.bind(this);
+    this.moveTwo = this.moveTwo.bind(this);
+    this.endOne = this.endOne.bind(this);
+    this.endTwo = this.endTwo.bind(this);
   }
 
   componentWillMount() {
@@ -222,7 +223,6 @@ class Slider extends React.Component {
       width: width,
       borderRadius: borderRadius || 0
     };
-
     return (
       <View style={[styles.container, this.props.containerStyle]}>
         <View style={[styles.fullTrack, { width: sliderLength }]}>
@@ -267,7 +267,10 @@ class Slider extends React.Component {
   }
 };
 
-module.exports = Slider;
+Slider.propTypes = sliderProps
+Slider.defaultProps = mockProps;
+
+export default Slider;
 
 
 var styles = StyleSheet.create({
