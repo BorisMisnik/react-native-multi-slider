@@ -50,13 +50,15 @@ class Slider extends React.Component {
     return mockProps;
   }
 
-  getInitialState() {
+  constructor(props) {
+    super(props);
+
     this.optionsArray = this.props.optionsArray || converter.createArray(this.props.min,this.props.max,this.props.step);
     this.stepLength = this.props.sliderLength/this.optionsArray.length;
 
     var initialValues = this.props.values.map(value => converter.valueToPosition(value,this.optionsArray,this.props.sliderLength));
 
-    return {
+    this.state = {
       pressedOne: true,
       valueOne: this.props.values[0],
       valueTwo: this.props.values[1],
