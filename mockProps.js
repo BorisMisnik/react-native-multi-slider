@@ -1,20 +1,12 @@
 'use strict';
 
 var React = require('react');
-var ReactNative = require('react-native');
+
 var PropTypes = require('prop-types');
 
-var {
-  View
-} = ReactNative;
+import {View, ViewPropTypes} from 'react-native';
 
 class BasicMarker extends React.Component {
-  propTypes: {
-    pressed: PropTypes.bool,
-    pressedMarkerStyle: View.propTypes.style,
-    markerStyle: View.propTypes.style
-  }
-
   render() {
     return (
       <View
@@ -23,6 +15,14 @@ class BasicMarker extends React.Component {
     );
   }
 };
+
+
+BasicMarker.propTypes = {
+    pressed: PropTypes.bool,
+    pressedMarkerStyle: ViewPropTypes ? ViewPropTypes.style : View.propTypes.style,
+    markerStyle: ViewPropTypes ? ViewPropTypes.style : View.propTypes.style,
+
+}
 
 var mockProps = {
   values: [0],

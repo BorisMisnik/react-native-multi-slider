@@ -8,13 +8,16 @@ var {
   StyleSheet,
   PanResponder,
   View,
-  TouchableHighlight
+  TouchableHighlight,
+  ViewPropTypes
 } = ReactNative;
 
 var converter = require('./converter.js');
 var mockProps = require('./mockProps.js');
 
-
+console.log('-------------------------');
+// console.log(View.propTypes);
+console.log('-------------------------');
 
 var sliderProps = {
   values: PropTypes.arrayOf(PropTypes.number),
@@ -35,12 +38,12 @@ var sliderProps = {
 
   optionsArray: PropTypes.array,
 
-  containerStyle: View.propTypes.style,
-  trackStyle: View.propTypes.style,
-  selectedStyle: View.propTypes.style,
-  unselectedStyle: View.propTypes.style,
-  markerStyle: View.propTypes.style,
-  pressedMarkerStyle: View.propTypes.style
+  containerStyle: ViewPropTypes ? ViewPropTypes.style : View.propTypes.style,
+  trackStyle: ViewPropTypes ? ViewPropTypes.style : View.propTypes.style,
+  selectedStyle: ViewPropTypes ? ViewPropTypes.style : View.propTypes.style,
+  unselectedStyle: ViewPropTypes ? ViewPropTypes.style : View.propTypes.style,
+  markerStyle: ViewPropTypes ? ViewPropTypes.style : View.propTypes.style,
+  pressedMarkerStyle: ViewPropTypes ? ViewPropTypes.style : View.propTypes.style
 };
 
 class Slider extends React.Component {
@@ -269,7 +272,7 @@ class Slider extends React.Component {
 
 Slider.propTypes = sliderProps
 Slider.defaultProps = mockProps;
-
+console.log('EXPORTEDDDDDDDDD SLIDER!!!')
 export default Slider;
 
 
