@@ -15,10 +15,6 @@ var {
 var converter = require('./converter.js');
 var mockProps = require('./mockProps.js');
 
-console.log('-------------------------');
-// console.log(View.propTypes);
-console.log('-------------------------');
-
 var sliderProps = {
   values: PropTypes.arrayOf(PropTypes.number),
 
@@ -272,7 +268,6 @@ class Slider extends React.Component {
 
 Slider.propTypes = sliderProps
 Slider.defaultProps = mockProps;
-console.log('EXPORTEDDDDDDDDD SLIDER!!!')
 export default Slider;
 
 
